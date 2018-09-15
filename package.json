@@ -1,0 +1,30 @@
+{
+  "name": "open-candidate",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yutin1987/open-candidate.git"
+  },
+  "author": "YuTin",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/yutin1987/open-candidate/issues"
+  },
+  "homepage": "https://github.com/yutin1987/open-candidate#readme",
+  "dependencies": {
+    "global": "^4.3.2",
+    "next": "^6.1.1",
+    "phaser": "^3.12.0",
+    "prop-types": "^15.6.2",
+    "react": "^16.4.2",
+    "react-dom": "^16.4.2"
+  }
+}
