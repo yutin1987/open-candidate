@@ -1,0 +1,172 @@
+{"frames": {
+
+"huang-back-walk.000":
+{
+	"frame": {"x":1,"y":1,"w":28,"h":40},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":3,"y":1,"w":28,"h":40},
+	"sourceSize": {"w":32,"h":42}
+},
+"huang-back-walk.001":
+{
+	"frame": {"x":91,"y":1,"w":26,"h":40},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":3,"y":1,"w":26,"h":40},
+	"sourceSize": {"w":32,"h":42}
+},
+"huang-back-walk.002":
+{
+	"frame": {"x":1,"y":43,"w":28,"h":40},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":1,"w":28,"h":40},
+	"sourceSize": {"w":32,"h":42}
+},
+"huang-back-walk.003":
+{
+	"frame": {"x":91,"y":1,"w":26,"h":40},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":3,"y":1,"w":26,"h":40},
+	"sourceSize": {"w":32,"h":42}
+},
+"huang-back":
+{
+	"frame": {"x":91,"y":1,"w":26,"h":40},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":3,"y":1,"w":26,"h":40},
+	"sourceSize": {"w":32,"h":42}
+},
+"huang-front-walk.000":
+{
+	"frame": {"x":61,"y":85,"w":26,"h":40},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":3,"y":1,"w":26,"h":40},
+	"sourceSize": {"w":32,"h":42}
+},
+"huang-front-walk.001":
+{
+	"frame": {"x":91,"y":43,"w":26,"h":40},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":3,"y":1,"w":26,"h":40},
+	"sourceSize": {"w":32,"h":42}
+},
+"huang-front-walk.002":
+{
+	"frame": {"x":89,"y":85,"w":26,"h":40},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":3,"y":1,"w":26,"h":40},
+	"sourceSize": {"w":32,"h":42}
+},
+"huang-front-walk.003":
+{
+	"frame": {"x":91,"y":43,"w":26,"h":40},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":3,"y":1,"w":26,"h":40},
+	"sourceSize": {"w":32,"h":42}
+},
+"huang-front":
+{
+	"frame": {"x":91,"y":43,"w":26,"h":40},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":3,"y":1,"w":26,"h":40},
+	"sourceSize": {"w":32,"h":42}
+},
+"huang-left-walk.000":
+{
+	"frame": {"x":31,"y":1,"w":28,"h":40},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":2,"y":1,"w":28,"h":40},
+	"sourceSize": {"w":32,"h":42}
+},
+"huang-left-walk.001":
+{
+	"frame": {"x":1,"y":85,"w":28,"h":40},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":2,"y":1,"w":28,"h":40},
+	"sourceSize": {"w":32,"h":42}
+},
+"huang-left-walk.002":
+{
+	"frame": {"x":31,"y":43,"w":28,"h":40},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":2,"y":1,"w":28,"h":40},
+	"sourceSize": {"w":32,"h":42}
+},
+"huang-left-walk.003":
+{
+	"frame": {"x":1,"y":85,"w":28,"h":40},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":2,"y":1,"w":28,"h":40},
+	"sourceSize": {"w":32,"h":42}
+},
+"huang-left":
+{
+	"frame": {"x":1,"y":85,"w":28,"h":40},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":2,"y":1,"w":28,"h":40},
+	"sourceSize": {"w":32,"h":42}
+},
+"huang-right-walk.000":
+{
+	"frame": {"x":61,"y":1,"w":28,"h":40},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":2,"y":1,"w":28,"h":40},
+	"sourceSize": {"w":32,"h":42}
+},
+"huang-right-walk.001":
+{
+	"frame": {"x":31,"y":85,"w":28,"h":40},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":2,"y":1,"w":28,"h":40},
+	"sourceSize": {"w":32,"h":42}
+},
+"huang-right-walk.002":
+{
+	"frame": {"x":61,"y":43,"w":28,"h":40},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":2,"y":1,"w":28,"h":40},
+	"sourceSize": {"w":32,"h":42}
+},
+"huang-right-walk.003":
+{
+	"frame": {"x":31,"y":85,"w":28,"h":40},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":2,"y":1,"w":28,"h":40},
+	"sourceSize": {"w":32,"h":42}
+},
+"huang-right":
+{
+	"frame": {"x":31,"y":85,"w":28,"h":40},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":2,"y":1,"w":28,"h":40},
+	"sourceSize": {"w":32,"h":42}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "huang.png",
+	"format": "RGBA8888",
+	"size": {"w":118,"h":126},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:f5f3420545fd50fff263072f1f85059a:45fb899808836370e15b02451c50c7c6:aed14c6604780803185ff59909826ca4$"
+}
+}

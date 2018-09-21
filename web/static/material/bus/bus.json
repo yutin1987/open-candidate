@@ -1,0 +1,172 @@
+{"frames": {
+
+"bus-back-walk.000":
+{
+	"frame": {"x":1,"y":1,"w":162,"h":66},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":0,"w":162,"h":66},
+	"sourceSize": {"w":164,"h":66}
+},
+"bus-back-walk.001":
+{
+	"frame": {"x":1,"y":1,"w":162,"h":66},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":0,"w":162,"h":66},
+	"sourceSize": {"w":164,"h":66}
+},
+"bus-back-walk.002":
+{
+	"frame": {"x":1,"y":1,"w":162,"h":66},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":0,"w":162,"h":66},
+	"sourceSize": {"w":164,"h":66}
+},
+"bus-back-walk.003":
+{
+	"frame": {"x":1,"y":1,"w":162,"h":66},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":0,"w":162,"h":66},
+	"sourceSize": {"w":164,"h":66}
+},
+"bus-back":
+{
+	"frame": {"x":1,"y":1,"w":162,"h":66},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":0,"w":162,"h":66},
+	"sourceSize": {"w":164,"h":66}
+},
+"bus-front-walk.000":
+{
+	"frame": {"x":1,"y":1,"w":162,"h":66},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":0,"w":162,"h":66},
+	"sourceSize": {"w":164,"h":66}
+},
+"bus-front-walk.001":
+{
+	"frame": {"x":1,"y":1,"w":162,"h":66},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":0,"w":162,"h":66},
+	"sourceSize": {"w":164,"h":66}
+},
+"bus-front-walk.002":
+{
+	"frame": {"x":1,"y":1,"w":162,"h":66},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":0,"w":162,"h":66},
+	"sourceSize": {"w":164,"h":66}
+},
+"bus-front-walk.003":
+{
+	"frame": {"x":1,"y":1,"w":162,"h":66},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":0,"w":162,"h":66},
+	"sourceSize": {"w":164,"h":66}
+},
+"bus-front":
+{
+	"frame": {"x":1,"y":1,"w":162,"h":66},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":0,"w":162,"h":66},
+	"sourceSize": {"w":164,"h":66}
+},
+"bus-left-walk.000":
+{
+	"frame": {"x":1,"y":1,"w":162,"h":66},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":0,"w":162,"h":66},
+	"sourceSize": {"w":164,"h":66}
+},
+"bus-left-walk.001":
+{
+	"frame": {"x":1,"y":1,"w":162,"h":66},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":0,"w":162,"h":66},
+	"sourceSize": {"w":164,"h":66}
+},
+"bus-left-walk.002":
+{
+	"frame": {"x":1,"y":1,"w":162,"h":66},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":0,"w":162,"h":66},
+	"sourceSize": {"w":164,"h":66}
+},
+"bus-left-walk.003":
+{
+	"frame": {"x":1,"y":1,"w":162,"h":66},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":0,"w":162,"h":66},
+	"sourceSize": {"w":164,"h":66}
+},
+"bus-left":
+{
+	"frame": {"x":1,"y":1,"w":162,"h":66},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":0,"w":162,"h":66},
+	"sourceSize": {"w":164,"h":66}
+},
+"bus-right-walk.000":
+{
+	"frame": {"x":1,"y":1,"w":162,"h":66},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":0,"w":162,"h":66},
+	"sourceSize": {"w":164,"h":66}
+},
+"bus-right-walk.001":
+{
+	"frame": {"x":1,"y":1,"w":162,"h":66},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":0,"w":162,"h":66},
+	"sourceSize": {"w":164,"h":66}
+},
+"bus-right-walk.002":
+{
+	"frame": {"x":1,"y":1,"w":162,"h":66},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":0,"w":162,"h":66},
+	"sourceSize": {"w":164,"h":66}
+},
+"bus-right-walk.003":
+{
+	"frame": {"x":1,"y":1,"w":162,"h":66},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":0,"w":162,"h":66},
+	"sourceSize": {"w":164,"h":66}
+},
+"bus-right":
+{
+	"frame": {"x":1,"y":1,"w":162,"h":66},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":0,"w":162,"h":66},
+	"sourceSize": {"w":164,"h":66}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "bus.png",
+	"format": "RGBA8888",
+	"size": {"w":164,"h":68},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:3152b4c0f70198d24c081bbaffbec1db:0114f84e9604b871994b0186578cbbbb:fed92cd67dc5577d0257dae17ed47e8b$"
+}
+}
