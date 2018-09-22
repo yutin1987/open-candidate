@@ -33,9 +33,9 @@ let scene;
 const npcs = {};
 const materials = {};
 
-socket.on('rename', ({ id, nickname, x, y } = {}) => {
+socket.on('rename', ({ id, texture, nickname, x, y } = {}) => {
   if (scene && !players.has(id)) {
-    const player = scene.add.sprite(x, y, 'atlas', 'misa-front');
+    const player = scene.add.sprite(x, y, texture || 'atlas', 'misa-front');
     player.nickname = nickname;
     players.set(id, player);
   }
@@ -58,29 +58,29 @@ socket.on('move', ({ id, x, y }) => {
 
     let direction;
     if (angle <= 0.75 || angle > 5.25) {
-      player.anims.play('misa-left-walk', true);
+      player.anims.play(`${player.texture.key}-left-walk`, true);
       direction = 'left';
     } else if (angle <= 2.25) {
       direction = 'up';
-      player.anims.play('misa-back-walk', true);
+      player.anims.play(`${player.texture.key}-back-walk`, true);
     } else if (angle <= 3.75) {
       direction = 'right';
-      player.anims.play('misa-right-walk', true);
+      player.anims.play(`${player.texture.key}-right-walk`, true);
     } else if (angle <= 5.25) {
       direction = 'down';
-      player.anims.play('misa-front-walk', true);
+      player.anims.play(`${player.texture.key}-front-walk`, true);
     }
 
     tween.setCallback('onComplete', () => {
       player.anims.stop();
       if (direction === 'left') {
-        player.setTexture('atlas', 'misa-left');
+        player.setTexture(player.texture.key, `${player.texture.key}-left`);
       } else if (direction === 'up') {
-        player.setTexture('atlas', 'misa-back');
+        player.setTexture(player.texture.key, `${player.texture.key}-back`);
       } else if (direction === 'right') {
-        player.setTexture('atlas', 'misa-right');
+        player.setTexture(player.texture.key, `${player.texture.key}-right`);
       } else if (direction === 'down') {
-        player.setTexture('atlas', 'misa-front');
+        player.setTexture(player.texture.key, `${player.texture.key}-front`);
       }
     }, []);
   }
@@ -93,7 +93,7 @@ const move = _.debounce((key, position) => {
 function preload() {
   this.load.image('tiles', '/static/tilesets/tuxmon-sample-32px-extruded.png');
   this.load.tilemapTiledJSON('map', '/static/tilemaps/tuxemon-town.json');
-  this.load.atlas('atlas', '/static/atlas/atlas.png', '/static/atlas/atlas.json');
+  this.load.atlas('misa', '/static/atlas/atlas.png', '/static/atlas/atlas.json');
   this.load.atlas('fi', '/static/character/fi/fi.png', '/static/character/fi/fi.json');
 
   this.load.atlas('huang', '/static/character/huang/huang.png', '/static/character/huang/huang.json');
@@ -127,13 +127,14 @@ function create() {
 
   const start = this.map.findObject('Objects', obj => obj.name === 'start');
 
-  me = this.physics.add.sprite(start.x, start.y, 'atlas', 'misa-front');
+  const { texture } = me;
+  me = this.physics.add.sprite(start.x, start.y, texture, `${texture}-front`);
   me.setSize(30, 40);
   me.setOffset(0, 24);
   me.setDepth(5);
   // me.setCollideWorldBounds(true);
 
-  socket.emit('rename', { nickname: 'new me', x: me.x, y: me.y });
+  socket.emit('rename', { texture, nickname: 'new me', x: me.x, y: me.y });
 
   this.physics.add.collider(me, this.worldLayer);
 
@@ -155,7 +156,7 @@ function create() {
     'care', 'education', 'labor', 'residential', 'open', 'gender',
   ], (name) => {
     const point = this.map.findObject('Objects', obj => obj.name === name);
-    npcs[name] = this.physics.add.sprite(point.x, point.y, 'atlas', 'misa-front');
+    npcs[name] = this.physics.add.sprite(point.x, point.y, 'fi', 'fi-front');
     npcs[name].setSize(30, 40);
     npcs[name].setOffset(0, 24);
     npcs[name].setDepth(3);
@@ -226,14 +227,34 @@ function create() {
 
   const { anims } = this;
   _.map([
-    'misa-left-walk',
-    'misa-right-walk',
-    'misa-front-walk',
-    'misa-back-walk',
-  ], (key) => {
+    ['misa', 'misa-left-walk'],
+    ['misa', 'misa-right-walk'],
+    ['misa', 'misa-front-walk'],
+    ['misa', 'misa-back-walk'],
+    ['alex', 'alex-left-walk'],
+    ['alex', 'alex-right-walk'],
+    ['alex', 'alex-front-walk'],
+    ['alex', 'alex-back-walk'],
+    ['bob', 'bob-left-walk'],
+    ['bob', 'bob-right-walk'],
+    ['bob', 'bob-front-walk'],
+    ['bob', 'bob-back-walk'],
+    ['clara', 'clara-left-walk'],
+    ['clara', 'clara-right-walk'],
+    ['clara', 'clara-front-walk'],
+    ['clara', 'clara-back-walk'],
+    ['dora', 'dora-left-walk'],
+    ['dora', 'dora-right-walk'],
+    ['dora', 'dora-front-walk'],
+    ['dora', 'dora-back-walk'],
+    ['huang', 'huang-left-walk'],
+    ['huang', 'huang-right-walk'],
+    ['huang', 'huang-front-walk'],
+    ['huang', 'huang-back-walk'],
+  ], ([name, key]) => {
     anims.create({
       key,
-      frames: anims.generateFrameNames('atlas', {
+      frames: anims.generateFrameNames(name, {
         prefix: `${key}.`, start: 0, end: 3, zeroPad: 3,
       }),
       frameRate: 10,
@@ -297,32 +318,32 @@ function update(time, delta) {
 
   const position = _.pick(me, ['x', 'y']);
   if (cursors.left.isDown) {
-    me.anims.play('misa-left-walk', true);
+    me.anims.play(`${me.texture.key}-left-walk`, true);
     move('left-walk', position);
   } else if (cursors.right.isDown) {
-    me.anims.play('misa-right-walk', true);
+    me.anims.play(`${me.texture.key}-right-walk`, true);
     move('right-walk', position);
   } else if (cursors.up.isDown) {
-    me.anims.play('misa-back-walk', true);
+    me.anims.play(`${me.texture.key}-back-walk`, true);
     move('back-walk', position);
   } else if (cursors.down.isDown) {
-    me.anims.play('misa-front-walk', true);
+    me.anims.play(`${me.texture.key}-front-walk`, true);
     move('front-walk', position);
   } else {
     me.anims.stop();
 
     // If we were moving, pick and idle frame to use
     if (prevVelocity.x < 0) {
-      me.setTexture('atlas', 'misa-left');
+      me.setTexture(me.texture.key, `${me.texture.key}-left`);
       move('left', position);
     } else if (prevVelocity.x > 0) {
-      me.setTexture('atlas', 'misa-right');
+      me.setTexture(me.texture.key, `${me.texture.key}-right`);
       move('right', position);
     } else if (prevVelocity.y < 0) {
-      me.setTexture('atlas', 'misa-back');
+      me.setTexture(me.texture.key, `${me.texture.key}-back`);
       move('back', position);
     } else if (prevVelocity.y > 0) {
-      me.setTexture('atlas', 'misa-front');
+      me.setTexture(me.texture.key, `${me.texture.key}-front`);
       move('front', position);
     }
   }
@@ -347,6 +368,8 @@ export default class extends React.Component {
   }
 
   componentDidMount() {
+    const { character } = this.props;
+    me = { texture: character };
     this.game = new Phaser.Game(config);
     window.addEventListener('resize', () => {
       if (this.game) this.game.resize(window.innerWidth, window.innerHeight);
@@ -424,7 +447,6 @@ export default class extends React.Component {
     const { dialogue, isDonate } = this.state;
     if (!dialogue) return null;
 
-    console.log(dialogue);
     if (dialogue === 'fi') {
       return <Center onCancel={this.onCancel} />;
     }

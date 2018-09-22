@@ -75,16 +75,17 @@ io.on('connection', (socket) => {
       if (key === id) return;
       socket.emit('rename', {
         id: key,
-        ..._.pick(player, ['nickname', 'x', 'y']),
+        ..._.pick(player, ['texture', 'nickname', 'x', 'y']),
       });
     });
   });
-  socket.on('rename', ({ nickname, x, y } = {}) => {
+  socket.on('rename', ({ texture, nickname, x, y } = {}) => {
     const player = players.get(id);
     player.x = x;
     player.y = y;
     player.nickname = nickname;
-    socket.broadcast.emit('rename', { id, nickname, x, y });
+    player.texture = texture;
+    socket.broadcast.emit('rename', { id, texture, nickname, x, y });
   });
   socket.on('move', ({ key, x, y } = {}) => {
     const player = players.get(id);
