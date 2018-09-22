@@ -56,6 +56,7 @@ web.prepare().then(() => {
   });
 
   app.get('*', (req, res) => handle(req, res));
+  app.post('/', (req, res) => res.redirect('/'));
 });
 
 io.on('connection', (socket) => {

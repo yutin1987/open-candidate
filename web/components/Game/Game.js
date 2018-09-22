@@ -1,7 +1,6 @@
 import _ from 'lodash';
 import React from 'react';
 import axios from 'axios';
-import Phaser from 'phaser';
 import EasyStar from 'easystarjs';
 import window from 'global/window';
 import document from 'global/document';
@@ -10,6 +9,8 @@ import styled from 'styled-components';
 import NPC from '../NPC/NPC';
 import Donate from '../Donate/Donate';
 import messages from './messages';
+
+const { Phaser } = window;
 
 const Container = styled.div`
   margin: 0;
@@ -401,7 +402,11 @@ export default class extends React.Component {
       NotifyURL: `https://${window.location.host}/notify`,
       ReturnURL: `https://${window.location.host}/`,
       LoginType: 0,
-      CREDITAGREEMENT: 1,
+      CREDIT: 1,
+      WEBATM: 1,
+      VACC: 1,
+      CVS: 1,
+      BARCODE: 1,
       TradeLimit: 10 * 60,
     }, (value, key) => {
       const field = document.createElement('input');

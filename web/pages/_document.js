@@ -25,6 +25,7 @@ export default class extends Document {
         <body>
           <Main />
           <script type="text/javascript" src="/static/pace/pace.min.js" />
+          <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/phaser/3.10.1/phaser.min.js" />
           <NextScript />
         </body>
       </html>
