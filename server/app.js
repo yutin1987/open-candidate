@@ -55,6 +55,14 @@ web.prepare().then(() => {
     res.status(200).end();
   });
 
+  app.post('/income', bodyParser.json(), async (req, res) => {
+    const income = await db('order').whereNotNull('paid_at').whereNull('deleted_at').orderBy('created_at');
+    const results = _.map(income, ({ id, ...item }) => ({
+      id: new BigNumber(_.replace(id, /-/gi, ''), 16).toString(32), ..._.pick(item, ['type', 'price', 'nickname', 'message', 'created_at']),
+    }));
+    res.json(results);
+  });
+
   app.get('*', (req, res) => handle(req, res));
   app.post('/', (req, res) => res.redirect('/'));
 });

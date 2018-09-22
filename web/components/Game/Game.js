@@ -8,6 +8,7 @@ import io from 'socket.io-client';
 import styled from 'styled-components';
 import NPC from '../NPC/NPC';
 import Donate from '../Donate/Donate';
+import Center from '../Center/Center';
 import messages from './messages';
 
 const { Phaser } = window;
@@ -422,6 +423,11 @@ export default class extends React.Component {
   renderDialogue() {
     const { dialogue, isDonate } = this.state;
     if (!dialogue) return null;
+
+    console.log(dialogue);
+    if (dialogue === 'fi') {
+      return <Center onCancel={this.onCancel} />;
+    }
 
     const message = messages[dialogue];
 
