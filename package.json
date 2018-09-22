@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "npm run migrate; node ./dist/app.js",
+    "start": "knex migrate:latest; node ./dist/app.js",
     "dev": "nodemon ./server/app.js --exec babel-node --watch server",
     "build": "npm run build-clean; npm run build-server; npm run build-web;",
     "build-clean": "rm -rf dist; rm -rf .next;",
@@ -31,11 +31,13 @@
     "@babel/core": "^7.1.0",
     "@babel/node": "^7.0.0",
     "@babel/polyfill": "^7.0.0",
+    "axios": "^0.18.0",
     "babel-core": "^7.0.0-bridge.0",
     "babel-eslint": "^9.0.0",
     "babel-jest": "^23.6.0",
     "babel-plugin-lodash": "^3.3.4",
     "babel-preset-next": "^1.2.0",
+    "bignumber.js": "^7.2.1",
     "body-parser": "^1.18.3",
     "easystarjs": "^0.4.3",
     "eslint": "^5.6.0",
@@ -46,10 +48,12 @@
     "express": "^4.16.3",
     "global": "^4.3.2",
     "jest": "^23.6.0",
+    "knex": "^0.15.2",
     "lodash": "^4.17.11",
     "moment-timezone": "^0.5.21",
     "next": "^6.1.2",
     "nodemon": "^1.18.4",
+    "pg": "^7.4.3",
     "phaser": "3.10.*",
     "prop-types": "^15.6.2",
     "react": "^16.4.2",
@@ -57,6 +61,7 @@
     "socket.io": "^2.1.1",
     "socket.io-client": "^2.1.1",
     "styled-components": "^3.4.9",
+    "thelper": "^1.3.4",
     "uuid": "^3.3.2"
   }
 }

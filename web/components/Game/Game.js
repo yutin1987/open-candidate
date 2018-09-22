@@ -1,10 +1,15 @@
 import _ from 'lodash';
 import React from 'react';
+import axios from 'axios';
 import Phaser from 'phaser';
 import EasyStar from 'easystarjs';
 import window from 'global/window';
+import document from 'global/document';
 import io from 'socket.io-client';
 import styled from 'styled-components';
+import NPC from '../NPC/NPC';
+import Donate from '../Donate/Donate';
+import messages from './messages';
 
 const Container = styled.div`
   margin: 0;
@@ -144,14 +149,15 @@ function create() {
 
   const npc = this.add.group();
   _.forEach([
-    'history', 'environment', 'transportation', 'nursery', 'care',
-    'education', 'labor', 'residential', 'open', 'gender',
+    'fi', 'history', 'environment', 'transportation', 'nursery',
+    'care', 'education', 'labor', 'residential', 'open', 'gender',
   ], (name) => {
     const point = this.map.findObject('Objects', obj => obj.name === name);
     npcs[name] = this.physics.add.sprite(point.x, point.y, 'atlas', 'misa-front');
     npcs[name].setSize(30, 40);
     npcs[name].setOffset(0, 24);
     npcs[name].setDepth(3);
+    npcs[name].nickname = name;
     // npcs[name].body.immovable = true;
     this.physics.add.collider(npcs[name], this.worldLayer);
     npc.add(npcs[name]);
@@ -239,15 +245,15 @@ function create() {
 
   cursors = this.input.keyboard.createCursorKeys();
 
-  this.add
-    .text(16, 16, 'Arrow keys to move\nPress "D" to show hitboxes', {
-      font: '18px monospace',
-      fill: '#000000',
-      padding: { x: 20, y: 10 },
-      backgroundColor: '#ffffff',
-    })
-    .setScrollFactor(0)
-    .setDepth(30);
+  // this.add
+  //   .text(16, 16, 'Arrow keys to move\nPress "D" to show hitboxes', {
+  //     font: '18px monospace',
+  //     fill: '#000000',
+  //     padding: { x: 20, y: 10 },
+  //     backgroundColor: '#ffffff',
+  //   })
+  //   .setScrollFactor(0)
+  //   .setDepth(30);
 
   this.input.keyboard.once('keydown_D', () => {
     this.physics.world.createDebugGraphic();
@@ -334,47 +340,111 @@ const config = {
 };
 
 export default class extends React.Component {
+  state = {
+    dialogue: null,
+  }
+
   componentDidMount() {
     this.game = new Phaser.Game(config);
     window.addEventListener('resize', () => {
-      if (this.game) {
-        this.game.resize(window.innerWidth, window.innerHeight);
-      }
+      if (this.game) this.game.resize(window.innerWidth, window.innerHeight);
     });
-    // setTimeout(() => {
-    //   scene.input.keyboard.on('keydown_SPACE', () => {
-    //     const { x, y } = me;
-    //     const npc = _.find(npcs, (target) => {
-    //       const distance = Phaser.Math.Distance.Between(target.x, target.y, x, y);
-    //       if (distance < 100) return true;
-    //       return false;
-    //     });
-    //
-    //     if (npc) {
-    //       this.onNPCDialogue(npc);
-    //       return;
-    //     }
-    //
-    //     const material = _.find(materials, (target) => {
-    //       const distance = Phaser.Math.Distance.Between(target.x, target.y, x, y);
-    //       if (distance < 100) return true;
-    //       return false;
-    //     });
-    //
-    //     if (material) this.onMaterialTake(material);
-    //   });
-    // }, 100);
+    document.addEventListener('keyup', this.onKeyUp);
   }
 
-  onNPCDialogue = (npc) => {
-
+  componentWillUnmount() {
+    document.removeEventListener('keyup', this.onKeyUp);
   }
 
-  onMaterialTake = (material) => {
+  onKeyUp = (event) => {
+    if (event.code !== 'Space') return;
 
+    const { dialogue } = this.state;
+    if (dialogue) return;
+
+    const { x, y } = me;
+    const npc = _.find(npcs, (target) => {
+      const distance = Phaser.Math.Distance.Between(target.x, target.y, x, y);
+      if (distance < 70) return true;
+      return false;
+    });
+
+    if (!npc) return;
+
+    this.setState({ dialogue: npc.nickname });
+  }
+
+  onCancel = () => {
+    this.setState({ dialogue: null, isDonate: false });
+  }
+
+  onSubmit = () => this.setState({ isDonate: true });
+
+  onDonate = async ({ price, nickname, message }) => {
+    const { dialogue } = this.state;
+    const reply = await axios.post('/order', { type: dialogue, price, nickname, message });
+    const { data } = reply;
+
+    const form = document.createElement('form');
+    form.setAttribute('method', 'post');
+    form.setAttribute('action', data.host);
+
+    _.forEach({
+      MerchantID: data.merchantId,
+      RespondType: 'JSON',
+      CheckValue: data.checkValue,
+      MerchantOrderNo: data.merchantOrderNo,
+      TimeStamp: data.timeStamp,
+      Version: data.version,
+      Amt: data.amount,
+      ItemDesc: data.amount,
+      NotifyURL: `https://${window.location.host}/notify`,
+      ReturnURL: `https://${window.location.host}/`,
+      LoginType: 0,
+      CREDITAGREEMENT: 1,
+      TradeLimit: 10 * 60,
+    }, (value, key) => {
+      const field = document.createElement('input');
+      field.setAttribute('type', 'hidden');
+      field.setAttribute('name', key);
+      field.setAttribute('value', value);
+      form.appendChild(field);
+    });
+    document.body.appendChild(form);
+    form.submit();
+  }
+
+  renderDialogue() {
+    const { dialogue, isDonate } = this.state;
+    if (!dialogue) return null;
+
+    const message = messages[dialogue];
+
+    if (isDonate) {
+      return (
+        <Donate
+          {...message}
+          onCancel={this.onCancel}
+          onSubmit={this.onDonate}
+        />
+      );
+    }
+
+    return (
+      <NPC
+        {...message}
+        onCancel={this.onCancel}
+        onSubmit={this.onSubmit}
+      />
+    );
   }
 
   render() {
-    return (<Container id="game" />);
+    return (
+      <React.Fragment>
+        <Container id="game" />
+        {this.renderDialogue()}
+      </React.Fragment>
+    );
   }
 }
