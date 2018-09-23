@@ -32,7 +32,6 @@ export default class extends React.Component {
     }
     if (event.code !== 'Space') return;
     const { step } = this.state;
-    window.Pace.restart();
     this.setState({ step: step + 1 });
     if (step + 1 >= 2) document.removeEventListener('keyup', this.onKeyUp);
   }
