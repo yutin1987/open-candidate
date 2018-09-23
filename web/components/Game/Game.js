@@ -110,6 +110,20 @@ function preload() {
   this.load.atlas('trash', '/static/material/trash/trash.png', '/static/material/trash/trash.json');
   this.load.atlas('ubike', '/static/material/ubike/ubike.png', '/static/material/ubike/ubike.json');
   this.load.atlas('wood', '/static/material/wood/wood.png', '/static/material/wood/wood.json');
+
+  const width = window.innerWidth;
+  const height = 4;
+  const progressbar = this.add.graphics();
+
+  const updateProgressbar = (percentage) => {
+    progressbar.clear();
+    progressbar.fillStyle(0xF2C042, 1);
+    progressbar.fillRect(0, 0, percentage * width, height);
+  };
+  this.load.on('progress', updateProgressbar);
+  this.load.once('complete', () => {
+    this.load.off('progress', updateProgressbar);
+  });
 }
 
 function create() {
