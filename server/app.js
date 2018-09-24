@@ -63,8 +63,9 @@ web.prepare().then(() => {
     res.json(results);
   });
 
-  app.get('*', (req, res) => handle(req, res));
   app.post('/', (req, res) => res.redirect('/'));
+
+  app.get('*', (req, res) => handle(req, res));
 });
 
 io.on('connection', (socket) => {
