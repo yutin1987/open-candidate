@@ -20,7 +20,7 @@ export default class extends Document {
         <Head>
           <meta property="og:title" content="全台最大募款遊戲上線啦！" />
           <meta property="og:description" content="你好，我是曾柏瑜！目前是新北市第8選區市議員候選人" />
-          <meta property="og:image" content="/static/fp.png" />
+          <meta property="og:image" content="/static/fb.png" />
           <link rel="stylesheet" type="text/css" href="static/reset.css" />
           <link rel="stylesheet" type="text/css" href="/static/pace/pace.css" />
         </Head>
