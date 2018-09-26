@@ -31,13 +31,11 @@ const Message = styled.div`
   }
 
   &:after {
-    content: '';
-    background: url('/static/assist/next.png');
-    background-size: 30px;
-    background-repeat: no-repeat;
+    content: 'Space | 按空白鍵繼續';
+    border: 2px solid #B57A35;
+    color: #B57A35;
+    padding: 6px;
     position: absolute;
-    height: 30px;
-    width: 30px;
     right: 18px;
     bottom: 18px;
   }
