@@ -292,18 +292,18 @@ function create() {
   //   .setScrollFactor(0)
   //   .setDepth(30);
 
-  this.input.keyboard.once('keydown_D', () => {
-    this.physics.world.createDebugGraphic();
-    const graphics = this.add
-      .graphics()
-      .setAlpha(0.75)
-      .setDepth(20);
-    this.worldLayer.renderDebug(graphics, {
-      tileColor: null,
-      collidingTileColor: new Phaser.Display.Color(243, 134, 48, 255),
-      faceColor: new Phaser.Display.Color(40, 39, 37, 255),
-    });
-  });
+  // this.input.keyboard.once('keydown_D', () => {
+  //   this.physics.world.createDebugGraphic();
+  //   const graphics = this.add
+  //     .graphics()
+  //     .setAlpha(0.75)
+  //     .setDepth(20);
+  //   this.worldLayer.renderDebug(graphics, {
+  //     tileColor: null,
+  //     collidingTileColor: new Phaser.Display.Color(243, 134, 48, 255),
+  //     faceColor: new Phaser.Display.Color(40, 39, 37, 255),
+  //   });
+  // });
 
   socket.emit('update');
 }
