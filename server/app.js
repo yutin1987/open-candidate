@@ -56,7 +56,7 @@ web.prepare().then(() => {
   });
 
   app.post('/income', bodyParser.json(), async (req, res) => {
-    const income = await db('order').whereNotNull('paid_at').whereNull('deleted_at').orderBy('created_at');
+    const income = await db('order').whereNotNull('paid_at').whereNull('deleted_at').orderBy('created_at', 'DESC');
     const results = _.map(income, ({ id, ...item }) => ({
       id: new BigNumber(_.replace(id, /-/gi, ''), 16).toString(32), ..._.pick(item, ['type', 'price', 'nickname', 'message', 'created_at']),
     }));
