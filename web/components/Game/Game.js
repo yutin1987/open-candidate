@@ -90,6 +90,8 @@ const move = _.debounce((key, position) => {
   socket.emit('move', { key, ...position });
 }, 100, { maxWait: 500 });
 
+let onNPCClick = () => {};
+
 function preload() {
   this.load.image('tiles', '/static/tilesets/tuxmon-sample-32px-extruded.png');
   this.load.tilemapTiledJSON('map', '/static/tilemaps/tuxemon-town.json');
@@ -175,6 +177,8 @@ function create() {
     npcs[name].setOffset(0, 24);
     npcs[name].setDepth(3);
     npcs[name].nickname = name;
+    npcs[name].setInteractive();
+    npcs[name].on('pointerup', () => onNPCClick(npcs[name]));
     // npcs[name].body.immovable = true;
     this.physics.add.collider(npcs[name], this.worldLayer);
     npc.add(npcs[name]);
@@ -384,6 +388,7 @@ export default class extends React.Component {
   componentDidMount() {
     const { character } = this.props;
     me = { texture: character };
+    onNPCClick = this.onNPCClick;
     this.game = new Phaser.Game(config);
     window.addEventListener('resize', () => {
       if (this.game) this.game.resize(window.innerWidth, window.innerHeight);
@@ -410,6 +415,10 @@ export default class extends React.Component {
 
     if (!npc) return;
 
+    this.setState({ dialogue: npc.nickname });
+  }
+
+  onNPCClick = (npc) => {
     this.setState({ dialogue: npc.nickname });
   }
 

@@ -17,6 +17,7 @@ export default class extends React.Component {
 
   componentDidMount() {
     document.addEventListener('keyup', this.onKeyUp);
+    document.addEventListener('touchstart', this.onTouchTap);
   }
 
   onKeyUp = (event) => {
@@ -33,7 +34,19 @@ export default class extends React.Component {
     if (event.code !== 'Space') return;
     const { step } = this.state;
     this.setState({ step: step + 1 });
-    if (step + 1 >= 2) document.removeEventListener('keyup', this.onKeyUp);
+    if (step + 1 >= 2) {
+      document.removeEventListener('keyup', this.onKeyUp);
+      document.removeEventListener('touchstart', this.onTouchTap);
+    }
+  }
+
+  onTouchTap = () => {
+    const { step } = this.state;
+    this.setState({ step: step + 1 });
+    if (step + 1 >= 2) {
+      document.removeEventListener('keyup', this.onKeyUp);
+      document.removeEventListener('touchstart', this.onTouchTap);
+    }
   }
 
   renderContent = () => {
