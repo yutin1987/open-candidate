@@ -427,7 +427,6 @@ export default class extends React.Component {
     const form = document.createElement('form');
     form.setAttribute('method', 'post');
     form.setAttribute('action', data.host);
-    form.setAttribute('target', '_blank');
 
     _.forEach({
       MerchantID: data.merchantId,
