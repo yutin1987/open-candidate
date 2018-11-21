@@ -127,13 +127,14 @@ export default class extends React.Component {
             <thead>
               <tr>
                 <th>項目</th>
-                <th>03月前</th>
                 <th>04月</th>
                 <th>05月</th>
                 <th>06月</th>
                 <th>07月</th>
                 <th>08月</th>
                 <th>09月</th>
+                <th>10月</th>
+                <th>11月</th>
                 <th>總計</th>
               </tr>
             </thead>
@@ -143,61 +144,78 @@ export default class extends React.Component {
                 <td>0</td>
                 <td>0</td>
                 <td>0</td>
-                <td>0</td>
                 <td>68,000</td>
-                <td>73,208</td>
-                <td>65,000</td>
-                <td>206,208</td>
+                <td>83,970</td>
+                <td>65,960</td>
+                <td>75,762</td>
+                <td>90,550</td>
+                <td>384,242</td>
+              </tr>
+              <tr>
+                <td>公共關係費用支出</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>11,994</td>
+                <td>8,994</td>
+                <td>20,988</td>
               </tr>
               <tr>
                 <td>交通旅運支出</td>
-                <td>30,000</td>
                 <td>0</td>
                 <td>0</td>
                 <td>0</td>
                 <td>0</td>
                 <td>0</td>
+                <td>1,750</td>
                 <td>0</td>
-                <td>30,000</td>
+                <td>0</td>
+                <td>1,750</td>
               </tr>
               <tr>
                 <td>宣傳支出</td>
-                <td>221,960</td>
                 <td>3,167</td>
                 <td>51,754</td>
                 <td>25,902</td>
                 <td>15,280</td>
                 <td>71,669</td>
-                <td>145,243</td>
-                <td>534,975</td>
+                <td>363,904</td>
+                <td>230,277</td>
+                <td>551,115</td>
+                <td>1,313,068</td>
               </tr>
               <tr>
                 <td>集會支出</td>
-                <td>48,325</td>
                 <td>0</td>
                 <td>0</td>
                 <td>2,625</td>
                 <td>0</td>
                 <td>0</td>
-                <td>1,750</td>
-                <td>52,700</td>
+                <td>5,988</td>
+                <td>67,448</td>
+                <td>4,450</td>
+                <td>80,511</td>
               </tr>
               <tr>
                 <td>雜支支出</td>
-                <td>0</td>
                 <td>0</td>
                 <td>120</td>
                 <td>2,425</td>
                 <td>835</td>
                 <td>201,392</td>
-                <td>120</td>
-                <td>204,892</td>
+                <td>760</td>
+                <td>490</td>
+                <td>240</td>
+                <td>206,262</td>
               </tr>
             </tbody>
             <tfoot>
               <tr>
-                <td colSpan="8">支出總計</td>
-                <td>1,028,775</td>
+                <td colSpan="9">支出總計</td>
+                <td>2,006,821</td>
               </tr>
             </tfoot>
           </Table>
